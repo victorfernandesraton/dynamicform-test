@@ -1,0 +1,5 @@
+projeto externo
+1 - criar strategy para inputs
+2 - criar strategy para forms
+3 -implementar exemplo de forms
+4 - criar versão de callback equivalente
