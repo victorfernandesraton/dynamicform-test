@@ -13,7 +13,7 @@ export default class FormCommunity extends FormStrategy {
         
         this.preWrap(this.entity);
         // parse de vários lugares diferentes
-        if (field == 'modify' && st_language) {
+        if (field === 'modify' && st_language) {
             if (st_language === 'pt-Br' || st_language === 'portugês') {
                 this.preWrap({fk_country: 1})
             } else {

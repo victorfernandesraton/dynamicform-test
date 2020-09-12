@@ -3,6 +3,7 @@ import React from 'react';
 import FormUser from './DynamicFrom/strategy/form/FormUser'; 
 import FormUserLanguage from './DynamicFrom/strategy/form/FormUserLanguage' 
 
+import App1 from './DynamicFrom/strategy/App';
 const formUser = [
   {label: 'Nome', type:'text', name: 'st_firstname'},
   {label: 'Sobrenome', type:'text', name: 'st_lastname'},
@@ -49,7 +50,7 @@ console.log(form1User1.getForm(), form1User2.getForm(), form2User2.getForm(), fo
 function App() {
   return (
     <div className="App">
-
+      <App1 />
     </div>
   );
 }
