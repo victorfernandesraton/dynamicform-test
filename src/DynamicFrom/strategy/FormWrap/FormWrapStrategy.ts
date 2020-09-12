@@ -1,3 +1,7 @@
+export interface FormField {
+    getFormIten(): any;
+    wrapContent(payload: any):void; 
+}
 export default abstract class FormWrapStrategy {
     
     protected formIten: any;
@@ -10,6 +14,6 @@ export default abstract class FormWrapStrategy {
         return this.formIten;
     }
 
-    abstract WrapContent(payload: any) :void
+    abstract wrapContent(payload: any) :void
 }
 
