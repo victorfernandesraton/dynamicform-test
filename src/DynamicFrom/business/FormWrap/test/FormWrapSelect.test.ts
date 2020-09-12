@@ -1,4 +1,4 @@
-import FormWrapSelect from '../business/FormWrap/FormWrapSelect';
+import FormWrapSelect from '../FormWrapSelect';
 
 describe('formWrapSelect test', () => {
     test('accepetd values', () => {
