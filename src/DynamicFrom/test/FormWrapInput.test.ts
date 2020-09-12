@@ -17,6 +17,7 @@ describe('formWrapInput test', () => {
             initialValue: 'Victor raton'
         })
     })
+
     test('paylod is not refer this field', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
@@ -32,6 +33,21 @@ describe('formWrapInput test', () => {
             name: 'st_username'
         })
     })
+    
+    test('empty payload', () => {
+        const record = new FormWrapInput({
+            title: 'Inssert name',
+            type: 'text',
+            name: 'st_username'
+        })
+        record.wrapContent()
+        expect(record.getFormIten()).toEqual({
+            title: 'Inssert name',
+            type: 'text',
+            name: 'st_username'
+        })
+    })
+
     test('not have name in objext', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
@@ -45,6 +61,7 @@ describe('formWrapInput test', () => {
             type: 'text'
         })
     })
+
     test('worng type', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
