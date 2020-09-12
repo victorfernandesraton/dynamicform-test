@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FormUser from './DynamicFrom/strategy/form/FormUser'; 
-import FormUserLanguage from './DynamicFrom/strategy/form/FormUserLanguage' 
+import FormUser from './DynamicFrom/business/form/FormUser'; 
+import FormUserLanguage from './DynamicFrom/business/form/FormUserLanguage' 
 
-import App1 from './DynamicFrom/strategy/App';
+import App1 from './DynamicFrom/business/App';
 const formUser = [
   {label: 'Nome', type:'text', name: 'st_firstname'},
   {label: 'Sobrenome', type:'text', name: 'st_lastname'},
@@ -21,32 +21,23 @@ const fromUserConfiguration = [
   {label: 'CEP', type:'number', name:'nm_cep'}
 ]
 
-const user1 = {
-  st_fisrtname: 'paulo',
-  st_lastname: 'jose',
-  st_language: 'pt-Br',
-  fk_country: 1,
-  nm_cep: 41366678
-}
+const users = [
+  {
+    st_fisrtname: 'paulo',
+    st_lastname: 'jose',
+    st_language: 'pt-Br',
+    fk_country: 1,
+    nm_cep: 41366678
+  },
+  {
+    st_fisrtname: 'ana',
+    st_country: 'br',
+    email: 'ana@ana.com',
+  }
+]
 
-const user2 = {
-  st_fisrtname: 'ana',
-  st_country: 'br',
-  email: 'ana@ana.com',
-}
 
 
-const form1User1 = new FormUser({formSkeleton: formUser, mutation: 'teste'}, user1);
-const form1User2 = new FormUser({formSkeleton: formUser, mutation: 'teste'}, user2);
-const form2User1 = new FormUserLanguage({formSkeleton: fromUserConfiguration, mutation: 'teste'}, user1);
-const form2User2 = new FormUserLanguage({formSkeleton: fromUserConfiguration, mutation: 'teste'}, user2);
-
-form1User1.wrap({}, 'edit')
-form1User2.wrap({}, 'edit')
-form2User1.wrap({}, 'edit')
-form2User1.wrap({}, 'edit')
-
-console.log(form1User1.getForm(), form1User2.getForm(), form2User2.getForm(), form2User1.getForm())
 function App() {
   return (
     <div className="App">

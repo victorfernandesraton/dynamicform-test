@@ -35,7 +35,7 @@ export default abstract class FormStrategy {
         })
     }
 
-    abstract wrap(payload: any, field :string): void
+    abstract wrap(payload: any): void
     
     abstract validate(): boolean;
     

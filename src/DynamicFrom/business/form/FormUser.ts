@@ -7,8 +7,8 @@ export default class FormUser extends FormStrategy {
         this.entity= user;
     }
     
-    wrap(payload: any, field: string): void {
-        const sumitButton = {label: field === 'edit'? 'Salvar': 'Criar', name: 'save'};
+    wrap(payload: any): void {
+        const sumitButton = {label: payload.field && payload.field === 'edit'? 'Salvar': 'Criar', name: 'save'};
         this.preWrap(this.entity);
         this.preWrap(payload);
         this.form = [...this.form, sumitButton];
