@@ -1,10 +1,10 @@
-import FormWrapInput from '../FormWrapInput';
+import FormWrapInput from '../FormItemSingle';
 
-describe('formWrapInput test', () => {
+describe('formItemSIngle test', () => {
     test('accepetd values', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username'
         })
         record.wrapContent({
@@ -12,7 +12,7 @@ describe('formWrapInput test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username',
             initialValue: 'Victor raton'
         })
@@ -21,7 +21,7 @@ describe('formWrapInput test', () => {
     test('paylod is not refer this field', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username'
         })
         record.wrapContent({
@@ -29,7 +29,7 @@ describe('formWrapInput test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username'
         })
     })
@@ -37,13 +37,13 @@ describe('formWrapInput test', () => {
     test('empty payload', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username'
         })
         record.wrapContent()
         expect(record.getFormIten()).toEqual({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
             name: 'st_username'
         })
     })
@@ -51,14 +51,14 @@ describe('formWrapInput test', () => {
     test('not have name in objext', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
-            type: 'text',
+            type: 'single',
         })
         record.wrapContent({
             st_name: 'Victor raton'
         })
         expect(record.getFormIten()).toEqual({
             title: 'Inssert name',
-            type: 'text'
+            type: 'single'
         })
     })
 
@@ -66,12 +66,18 @@ describe('formWrapInput test', () => {
         const record = new FormWrapInput({
             title: 'Inssert name',
             type: 'select',
-            name: 'st_username'
+            name: 'st_username',
+            options: [
+                {value: 1, label: 'pt-br'},
+                {value: 2, label: 'en-us'},
+                {value: 3, label: 'es'},
+                {value: 4, label: 'jp'}
+            ]
         })
         expect(() => {
             record.wrapContent({
                 st_username: 'Victor raton'
             })
-        }).toThrow('invalid field type')
+        }).toThrow('Invalid type')
     })
 })

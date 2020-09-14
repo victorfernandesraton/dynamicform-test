@@ -1,4 +1,4 @@
-import FormWrapFactory from "../FormWrap/FormWrapFzctory";
+import FormWrapFactory from "../FormWrap/FormItemFactory";
 
 export interface FormObject {
     formSkeleton: Array<any>;
@@ -27,7 +27,7 @@ export default abstract class FormStrategy {
         return this.form;
     }
 
-    preWrap(payload: any, excludes?: Array<string>) {
+    formReplace(payload: any, excludes?: Array<string>) {
         this.form = this.formSkeleton.map(formItem => {
             let newFormIten = FormWrapFactory(formItem);
             if (!excludes?.includes(formItem.name)) {

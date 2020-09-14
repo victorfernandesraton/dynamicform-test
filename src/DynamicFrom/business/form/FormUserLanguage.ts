@@ -11,16 +11,16 @@ export default class FormCommunity extends FormStrategy {
         const {st_language} = payload;
         const sumitButton = {label: payload.field && payload.field === 'modify'? 'Salvar': 'Criar', name: 'save'};
         
-        this.preWrap(this.entity);
+        this.formReplace(this.entity);
         // parse de vários lugares diferentes
         if (payload.field === 'modify' && st_language) {
             if (st_language === 'pt-Br' || st_language === 'portugês') {
-                this.preWrap({fk_country: 1})
+                this.formReplace({fk_country: 1})
             } else {
-                this.preWrap({fk_country: 2})
+                this.formReplace({fk_country: 2})
             }
         }
-        this.preWrap(payload);
+        this.formReplace(payload);
         this.form = [...this.form, sumitButton];
 
     }

@@ -1,10 +1,11 @@
-import FormWrapSelect from '../FormWrapSelect';
+import FormItemMulti from '../FormItemlMuti';
 
-describe('formWrapSelect test', () => {
+describe('FormItemMulti test', () => {
     test('accepetd values', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
+            field: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -18,7 +19,8 @@ describe('formWrapSelect test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
+            field: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -30,9 +32,10 @@ describe('formWrapSelect test', () => {
     })
 
     test('overwide defalt', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
+            field: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -46,7 +49,8 @@ describe('formWrapSelect test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
+            field: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -58,9 +62,9 @@ describe('formWrapSelect test', () => {
     })
 
     test('conserve default value', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -74,7 +78,7 @@ describe('formWrapSelect test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -86,9 +90,9 @@ describe('formWrapSelect test', () => {
     })
 
     test('payload not refer field', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -102,7 +106,7 @@ describe('formWrapSelect test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -114,9 +118,9 @@ describe('formWrapSelect test', () => {
     })
 
     test('empty payload', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -128,7 +132,7 @@ describe('formWrapSelect test', () => {
         record.wrapContent()
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -140,9 +144,9 @@ describe('formWrapSelect test', () => {
     })
 
     test('not have name in input object', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             options: [
                 {value: 1, label: 'pt-br'},
                 {value: 2, label: 'en-us'},
@@ -155,7 +159,7 @@ describe('formWrapSelect test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'select',
+            type: 'multi',
             options: [
                 {value: 1, label: 'pt-br'},
                 {value: 2, label: 'en-us'},
@@ -166,7 +170,7 @@ describe('formWrapSelect test', () => {
     })
     
     test('worng type', () => {
-        const record = new FormWrapSelect({
+        const record = new FormItemMulti({
             title: 'Inssert name',
             type: 'input',
             name: 'st_username'

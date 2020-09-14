@@ -1,10 +1,12 @@
+import FormFieldOject from "./FormItemObject";
+
 export interface FormField {
     getFormIten(): any;
     wrapContent(payload: any):void; 
 }
 export default abstract class FormWrapStrategy {
     
-    protected formIten: any;
+    protected formIten: FormFieldOject;
 
     constructor(formIten: any) {
         this.formIten = formIten;
