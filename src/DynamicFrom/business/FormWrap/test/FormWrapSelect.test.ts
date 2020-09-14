@@ -29,6 +29,34 @@ describe('formWrapSelect test', () => {
         })
     })
 
+    test('overwide defalt', () => {
+        const record = new FormWrapSelect({
+            title: 'Select language',
+            type: 'select',
+            name: 'fk_language',
+            options: [
+                {value: 1, label: 'pt-br'},
+                {value: 2, label: 'en-us'},
+                {value: 3, label: 'es'},    
+                {value: 4, label: 'jp', default: true}
+            ]
+        })
+        record.wrapContent({
+            fk_language: 2
+        })
+        expect(record.getFormIten()).toEqual({
+            title: 'Select language',
+            type: 'select',
+            name: 'fk_language',
+            options: [
+                {value: 1, label: 'pt-br'},
+                {value: 2, label: 'en-us', default:true},
+                {value: 3, label: 'es'},
+                {value: 4, label: 'jp'}
+            ]
+        })
+    })
+
     test('payload not refer field', () => {
         const record = new FormWrapSelect({
             title: 'Select language',
