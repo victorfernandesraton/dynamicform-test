@@ -1,4 +1,4 @@
-import FormWrapFactory from "../FormWrap/FormItemFactory";
+import FormItemFactory from "../FormItem/FormItemFactory";
 
 export interface FormObject {
     formSkeleton: Array<any>;
@@ -29,7 +29,7 @@ export default abstract class FormStrategy {
 
     formReplace(payload: any) {
         this.form = this.formSkeleton.map(formItem => {
-            let newFormIten = FormWrapFactory(formItem);
+            let newFormIten = FormItemFactory(formItem);
             newFormIten.wrapContent(payload);
             return newFormIten.getFormIten();
         })

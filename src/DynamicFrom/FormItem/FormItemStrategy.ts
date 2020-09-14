@@ -4,7 +4,7 @@ export interface FormField {
     getFormIten(): any;
     wrapContent(payload: any):void; 
 }
-export default abstract class FormWrapStrategy {
+export default abstract class FormItemStrategy {
     
     protected formIten: FormFieldOject;
 

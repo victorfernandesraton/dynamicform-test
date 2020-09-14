@@ -1,5 +1,5 @@
-import FormWrapStrategy from './FormItemStrategy';
-export default class FormWrapInput extends FormWrapStrategy {
+import FormItemStrategy from './FormItemStrategy';
+export default class FormItemSingle extends FormItemStrategy {
     
     wrapContent(payload?: any) {
         if (!this.formIten.type) {

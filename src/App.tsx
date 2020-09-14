@@ -1,8 +1,5 @@
 import React from 'react';
 
-import FormUser from './DynamicFrom/business/form/FormUser'; 
-import FormUserLanguage from './DynamicFrom/business/form/FormUserLanguage' 
-
 import App1 from './DynamicFrom/business/App';
 const formUser = [
   {label: 'Nome', type:'text', name: 'st_firstname'},

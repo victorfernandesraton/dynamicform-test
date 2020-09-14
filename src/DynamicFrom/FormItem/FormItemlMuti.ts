@@ -1,6 +1,6 @@
-import FormWrapStrategy from "./FormItemStrategy";
+import FormItemStrategy from "./FormItemStrategy";
 
-export default class FormWrapMulti extends FormWrapStrategy {
+export default class FormItemMulti extends FormItemStrategy {
 
   wrapContent(payload?: any) {
     if (!this.formIten.type) {
