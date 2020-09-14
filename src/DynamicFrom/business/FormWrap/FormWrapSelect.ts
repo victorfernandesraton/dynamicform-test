@@ -10,16 +10,22 @@ export default class FormWrapSelect extends FormWrapStrategy {
     ) {
       throw new Error("invalid field type");
     }
+    const initiaOptions = new Array(...this.formIten.options);
     for (let props in payload) {
       if (this.formIten.options && this.formIten.options.length) {
-        this.formIten.options.map((el: any) => {
+        const options = this.formIten.options.map((el: any) => {
+          const {label, value} = el;
           if (this.formIten.name === props && payload[props] === el.value) {
-            el.default = true;
-        } else {
-            delete el.default;
-        }
-        return el;
+             return {label, value, default: true}
+          } 
+            return {label,value}
         });
+
+        this.formIten.options = options.find((el: any) => el.default === true) ? options : initiaOptions;
+        
+        // if (!this.formIten.options.filter((el: any) => el.default === true).length) {
+        //   this.formIten.options = initiaOptions 
+        // }
       }
     }
   }
