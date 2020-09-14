@@ -27,12 +27,10 @@ export default abstract class FormStrategy {
         return this.form;
     }
 
-    formReplace(payload: any, excludes?: Array<string>) {
+    formReplace(payload: any) {
         this.form = this.formSkeleton.map(formItem => {
             let newFormIten = FormWrapFactory(formItem);
-            if (!excludes?.includes(formItem.name)) {
-                newFormIten.wrapContent(payload);
-            }
+            newFormIten.wrapContent(payload);
             return newFormIten.getFormIten();
         })
     }

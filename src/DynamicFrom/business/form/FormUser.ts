@@ -11,8 +11,7 @@ export default class FormUser extends FormStrategy {
         const sumitButton = {label: 'Salvar', name: 'save', type:'submit'};
         this.formReplace(this.entity);
         if (payload) {
-            // exclusão de gênero para garantir que o gênero seja do usuário
-            this.formReplace(payload, ['gender']);
+            this.formReplace(payload);
             if (payload.field === 'create') {
                 sumitButton.label = 'Criar'
             }
