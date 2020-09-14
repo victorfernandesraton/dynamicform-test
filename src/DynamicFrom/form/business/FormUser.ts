@@ -8,7 +8,7 @@ export default class FormUser extends FormStrategy {
     }
     
     wrap(payload?: any): void {
-        const sumitButton = {label: 'Salvar', name: 'save', type:'submit'};
+        const sumitButton = {label: 'Salvar', name: 'save', type:'single', field: 'submit'};
         this.formReplace(this.entity);
         if (payload) {
             this.formReplace(payload);
@@ -17,8 +17,5 @@ export default class FormUser extends FormStrategy {
             }
         }
         this.form = [...this.form, sumitButton];
-    }
-    validate(): boolean {
-        throw new Error('Method not implemented.');
     }
 }

@@ -1,28 +1,11 @@
-export const textInputFromParser = ({form, payload}) => {
-  return form.map((el) => {
-    if (payload.hasOwnPropety(el.name)) {
-      el.initialValue = payload[el.name];
-    }
-    return el;
-  });
-};
-
-export const selectFormParser = ({formOpts, payload}) => {
-  return formOpts.map((opts) => {
-    if (payload.hasOwnPropety(opts.value)) {
-      opts.default = true;
-    }
-  });
-};
-
 export const getInitialValues = (formData = []) => {
-  return formData.reduce((acc, item) => {
+  return formData.reduce((acc: any, item:any) => {
     let initialValue;
     switch (item.type) {
       case 'select':
       case 'switch':
         const result = item.options.find(
-          (op) => op.isDefault === true || op.default === true,
+          (op: any) => op.isDefault === true || op.default === true,
         );
 
         initialValue = result ? result.value : null;
@@ -35,13 +18,18 @@ export const getInitialValues = (formData = []) => {
   }, {});
 };
 
+export interface FieldProps {
+  name: string,
+  prop: any,
+  newValue: any
+}
 export const updateDynamicFormFieldProp = (
-  formData,
-  {name, prop, newValue},
+  formData: [],
+  fieldProps: FieldProps,
 ) => {
-  return formData.map((field) => {
-    if (field.name === name) {
-      field[prop] = newValue;
+  return formData.map((field: any) => {
+    if (field.name === fieldProps.name) {
+      field[fieldProps.prop] = fieldProps.newValue;
     }
 
     return field;

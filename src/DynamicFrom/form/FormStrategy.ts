@@ -1,3 +1,5 @@
+import * as Yup from 'yup';
+
 import FormItemFactory from "../FormItem/FormItemFactory";
 
 export interface FormObject {
@@ -37,6 +39,29 @@ export default abstract class FormStrategy {
 
     abstract wrap(payload: any): void
     
-    abstract validate(): boolean;
+    validateSchema(): any {
+        let _validationSchema = this.form.reduce((result, item, index, array) => {
+            result[item.name] = index;
+            return result;
+        }, {});
+
+        for(const item of this.form){
+
+            console.log(item.name, item.field)
+            if(item.field === "text"){
+                _validationSchema[item.name] = Yup.string();
+            }else if(item.field === "email"){
+                _validationSchema[item.name] = Yup.string().email()
+            }else if(item.field === "select"){
+                _validationSchema[item.name] = Yup.string().oneOf(item.options.map((o: any) => o.value));
+            }
+
+            if(item.required){
+                _validationSchema[item.name] = _validationSchema[item.name].required('Required');
+            }
+        }
+
+        return Yup.object().shape({ ..._validationSchema });
+    }
     
 }

@@ -5,12 +5,12 @@ import SwitchFormFields from './DynamicFormSwitchFields';
 import {getInitialValues} from './DynamicForm-utils';
 // import {FormContainer} from './DynamicForm-style';
 
-const DynamicFormView = (props) => {
-  const {formData, onSubmit, styled, ...extraProps} = props;
+const DynamicFormView = (props: any) => {
+  const {formData, onSubmit, styled, validationSchema, ...extraProps} = props;
   // TODO: inplementar em nativo
   // const Container = styled ? styled : FormContainer;
   return (
-    <Formik onSubmit={onSubmit} initialValues={getInitialValues(formData)}>
+    <Formik onSubmit={onSubmit} initialValues={getInitialValues(formData)} validationSchema={validationSchema} {...extraProps}>
       {(formProps) => {
         return (
           <>

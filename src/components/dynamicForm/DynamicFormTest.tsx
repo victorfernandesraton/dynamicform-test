@@ -2,7 +2,7 @@ import React from 'react';
 
 import Dynamicform from './DynamicFormView-container';
 
-const DynamicFormTest = (props) => {
+const DynamicFormTest = (props: any) => {
   return (
     <div>
       <Dynamicform

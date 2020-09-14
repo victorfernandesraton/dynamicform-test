@@ -1,43 +1,38 @@
-import React from 'react';
+import React from "react";
 
-import FormUser from './DynamicFrom/form/business/FormUser';
-const formUser = [
-  {label: 'Nome', type:'text', name: 'st_firstname'},
-  {label: 'Sobrenome', type:'text', name: 'st_lastname'},
-  {label: "Gênero", name:"fk_gender", type: "select", options: [
-    {label: 'Masculino', value: 1},
-    {label: 'Feminino', value: 2}
-  ]},
-]
-const fromUserConfiguration = [
-  {label: "Pais", name:"fk_country", type: "select", options: [
-    {label: 'Brasil', value: 1},
-    {label: 'Estados Unidos', value: 2}
-  ]},
-  {label: 'email', type:'email', name:'st_mail'},
-  {label: 'CEP', type:'number', name:'nm_cep'}
-]
+import FormUser from "./DynamicFrom/form/business/FormUser";
+import DynamicForm from "./components/dynamicForm/DynamicFormView-container";
 
-const users = [
+const formSkeleton = [
+  { label: "Nome", name: "username", type: "single", field: "text" },
+  { label: "Sobrenome", name: "lastname", type: "single", field: "text" },
+  { label: "Email", name: "usermail", type: "single", field: "email"},
   {
-    st_fisrtname: 'paulo',
-    st_lastname: 'jose',
-    st_language: 'pt-Br',
-    fk_country: 1,
-    nm_cep: 41366678
+    label: "Gênero",
+    name: "gender",
+    type: "multi",
+    field: "select",
+    options: [
+      { label: "Masculino", value: 1 },
+      { label: "Feminino", value: 2 },
+    ],
   },
+];
+const user = { username: "Ana", gender: 2, usermail: 'ana@gmail.com' };
+const formUser = new FormUser(
   {
-    st_fisrtname: 'ana',
-    st_country: 'br',
-    email: 'ana@ana.com',
-  }
-]
+    formSkeleton,
+    mutation: "",
+  },
+  user
+);
 
-
+formUser.wrap({ field: "edit" });
 
 function App() {
   return (
     <div className="App">
+      <DynamicForm formData={formUser.getForm()} validationSchema={formUser.validateSchema()} enableRenitialize />
     </div>
   );
 }

@@ -10,12 +10,15 @@ import React from 'react';
 // import PlaceField from '../layout/formItem/PlaceField';
 // import SwitchField from '../layout/formItem/SwitchField';
 
-const DynamicFormSwitchFields = ({formData, ...restProps}) => {
+
+const DynamicFormSwitchFields = (props: any) => {
+  const {formData} = props;
   return formData.map((item: any) => {
+    console.log(item);
     switch (item.field) {
       case 'submit_button':
       case 'submit':
-        return <button type='submit' value={item.label} name={item.name} />
+        return <button type='submit' value={item.label} name={item.name} >{item.label}</button>
       case 'text':
       case 'password':
       case 'textarea':
@@ -47,7 +50,7 @@ const DynamicFormSwitchFields = ({formData, ...restProps}) => {
       default:
         return (
           <>
-            {`tipo ${item.type} não implementado`}
+            {`tipo ${item.field} não implementado`}
           </>
         );
     }
