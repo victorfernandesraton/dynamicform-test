@@ -17,7 +17,6 @@ export default class FormUser extends FormStrategy {
             }
         }
         this.form = [...this.form, sumitButton];
-
     }
     validate(): boolean {
         throw new Error('Method not implemented.');
