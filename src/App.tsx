@@ -6,7 +6,7 @@ import DynamicForm from "./components/dynamicForm/DynamicFormView-container";
 const formSkeleton = [
   { label: "Nome", name: "username", type: "single", field: "text" },
   { label: "Sobrenome", name: "lastname", type: "single", field: "text" },
-  { label: "Email", name: "usermail", type: "single", field: "email"},
+  { label: "Email", name: "usermail", type: "single", field: "email", required: true},
   {
     label: "Gênero",
     name: "gender",
@@ -17,8 +17,9 @@ const formSkeleton = [
       { label: "Feminino", value: 2 },
     ],
   },
+  {name: 'save', type: 'single', field: 'submit', label: 'Enviar', onSubmit: (value: any, sec: any) => console.log(value, sec)}
 ];
-const user = { username: "Ana", gender: 2, usermail: 'ana@gmail.com' };
+const user = { username: "Ana", gender: 2 };
 const formUser = new FormUser(
   {
     formSkeleton,

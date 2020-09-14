@@ -12,13 +12,14 @@ import React from 'react';
 
 
 const DynamicFormSwitchFields = (props: any) => {
-  const {formData} = props;
+  const {formData, formProps} = props;
+  const {error} = formProps;
+  const {values, handleChange} = formProps;
   return formData.map((item: any) => {
-    console.log(item);
     switch (item.field) {
       case 'submit_button':
       case 'submit':
-        return <button type='submit' value={item.label} name={item.name} >{item.label}</button>
+        return <button onClick={item.onSubmit} type='submit' value={values[item.label]} name={item.name} >{item.label}</button>
       case 'text':
       case 'password':
       case 'textarea':
@@ -28,7 +29,10 @@ const DynamicFormSwitchFields = (props: any) => {
         return (
           <>
             {item.label && <label>{item.label}</label>}
-            <input type={item.field} value={item.initialValue} />
+            <input type={item.field} value={values[item.label]} onChange={(e) => {
+              handleChange(item.name)(e.target.value)
+            }}/>
+            {error && error[item.name] && (<p>{error[item.name]}</p>)}
           </> 
         ) 
       case 'select':
@@ -39,12 +43,14 @@ const DynamicFormSwitchFields = (props: any) => {
                 return <option key={key} value={el.value}>{el.label}</option>
               })}
             </select>
+            {error && error[item.name] && (<p>{error[item.name]}</p>)}
           </>
         ) 
       case 'switch':
         return (
           <>
             {item.options.map((el: any, key: number) => <input key={key}type='radio' value={el.value} />)}
+            {error[item.name] && (<p>{error[item.name]}</p>)}
           </>)
         ;
       default:

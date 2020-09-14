@@ -46,8 +46,6 @@ export default abstract class FormStrategy {
         }, {});
 
         for(const item of this.form){
-
-            console.log(item.name, item.field)
             if(item.field === "text"){
                 _validationSchema[item.name] = Yup.string();
             }else if(item.field === "email"){
