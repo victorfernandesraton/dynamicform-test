@@ -1,8 +1,8 @@
-import FormWrapInput from '../FormItemSingle';
+import FormItemSingle from '../FormItemSingle';
 
 describe('formItemSIngle test', () => {
     test('accepetd values', () => {
-        const record = new FormWrapInput({
+        const record = new FormItemSingle({
             title: 'Inssert name',
             type: 'single',
             name: 'st_username'
@@ -19,7 +19,7 @@ describe('formItemSIngle test', () => {
     })
 
     test('paylod is not refer this field', () => {
-        const record = new FormWrapInput({
+        const record = new FormItemSingle({
             title: 'Inssert name',
             type: 'single',
             name: 'st_username'
@@ -35,7 +35,7 @@ describe('formItemSIngle test', () => {
     })
     
     test('empty payload', () => {
-        const record = new FormWrapInput({
+        const record = new FormItemSingle({
             title: 'Inssert name',
             type: 'single',
             name: 'st_username'
@@ -49,7 +49,7 @@ describe('formItemSIngle test', () => {
     })
 
     test('not have name in objext', () => {
-        const record = new FormWrapInput({
+        const record = new FormItemSingle({
             title: 'Inssert name',
             type: 'single',
         })
@@ -63,7 +63,7 @@ describe('formItemSIngle test', () => {
     })
 
     test('worng type', () => {
-        const record = new FormWrapInput({
+        const record = new FormItemSingle({
             title: 'Inssert name',
             type: 'select',
             name: 'st_username',

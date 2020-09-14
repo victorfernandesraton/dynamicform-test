@@ -1,6 +1,6 @@
 import React from 'react';
 
-import App1 from './DynamicFrom/business/App';
+import FormUser from './DynamicFrom/form/business/FormUser';
 const formUser = [
   {label: 'Nome', type:'text', name: 'st_firstname'},
   {label: 'Sobrenome', type:'text', name: 'st_lastname'},
@@ -38,7 +38,6 @@ const users = [
 function App() {
   return (
     <div className="App">
-      <App1 />
     </div>
   );
 }

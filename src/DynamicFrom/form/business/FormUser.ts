@@ -1,4 +1,4 @@
-import FormStrategy, {FormObject} from './FormStrategy';
+import FormStrategy, {FormObject} from '../FormStrategy';
 
 export default class FormUser extends FormStrategy {
 

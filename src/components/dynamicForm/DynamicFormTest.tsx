@@ -1,11 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
 
 import Dynamicform from './DynamicFormView-container';
 
 const DynamicFormTest = (props) => {
   return (
-    <View>
+    <div>
       <Dynamicform
         formData={[
           {
@@ -65,13 +64,13 @@ const DynamicFormTest = (props) => {
             name: 'submit',
             type: 'submit',
             label: 'Enviar',
-            onSubmit: (values, handleChange) => {
+            onSubmit: (values: any, handleChange: Function) => {
               console.log(values, 'teste', handleChange('texto')('mudei'));
             },
           },
         ]}
       />
-    </View>
+    </div>
   );
 };
 
