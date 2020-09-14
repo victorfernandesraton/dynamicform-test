@@ -57,6 +57,34 @@ describe('formWrapSelect test', () => {
         })
     })
 
+    test('conserve default value', () => {
+        const record = new FormWrapSelect({
+            title: 'Select language',
+            type: 'select',
+            name: 'fk_language',
+            options: [
+                {value: 1, label: 'pt-br'},
+                {value: 2, label: 'en-us'},
+                {value: 3, label: 'es'},    
+                {value: 4, label: 'jp', default: true}
+            ]
+        })
+        record.wrapContent({
+            language: 2
+        })
+        expect(record.getFormIten()).toEqual({
+            title: 'Select language',
+            type: 'select',
+            name: 'fk_language',
+            options: [
+                {value: 1, label: 'pt-br'},
+                {value: 2, label: 'en-us'},
+                {value: 3, label: 'es'},
+                {value: 4, label: 'jp', default: true}
+            ]
+        })
+    })
+
     test('payload not refer field', () => {
         const record = new FormWrapSelect({
             title: 'Select language',
