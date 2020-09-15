@@ -9,6 +9,7 @@ export default class FormUser extends FormStrategy {
     
     wrap(payload?: any): void {
         this.formReplace(this.entity);
+        
         if (payload) {
             this.formReplace(payload);
         }

@@ -4,8 +4,8 @@ describe('FormItemMulti test', () => {
     test('accepetd values', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
-            field: 'select',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -19,8 +19,8 @@ describe('FormItemMulti test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
-            field: 'select',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -34,8 +34,8 @@ describe('FormItemMulti test', () => {
     test('overwide defalt', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
-            field: 'select',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -49,8 +49,8 @@ describe('FormItemMulti test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
-            field: 'select',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -64,7 +64,8 @@ describe('FormItemMulti test', () => {
     test('conserve default value', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -78,7 +79,8 @@ describe('FormItemMulti test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -92,7 +94,8 @@ describe('FormItemMulti test', () => {
     test('payload not refer field', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -106,7 +109,8 @@ describe('FormItemMulti test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -120,7 +124,8 @@ describe('FormItemMulti test', () => {
     test('empty payload', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -132,7 +137,8 @@ describe('FormItemMulti test', () => {
         record.wrapContent()
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
+            type: 'select',
             name: 'fk_language',
             options: [
                 {value: 1, label: 'pt-br'},
@@ -146,7 +152,7 @@ describe('FormItemMulti test', () => {
     test('not have name in input object', () => {
         const record = new FormItemMulti({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
             options: [
                 {value: 1, label: 'pt-br'},
                 {value: 2, label: 'en-us'},
@@ -159,7 +165,7 @@ describe('FormItemMulti test', () => {
         })
         expect(record.getFormIten()).toEqual({
             title: 'Select language',
-            type: 'multi',
+            field: 'multi',
             options: [
                 {value: 1, label: 'pt-br'},
                 {value: 2, label: 'en-us'},
@@ -179,6 +185,6 @@ describe('FormItemMulti test', () => {
             record.wrapContent({
                 st_username: 'Victor raton'
             })
-        }).toThrow('invalid field type')
+        }).toThrow('invalid field')
     })
 })

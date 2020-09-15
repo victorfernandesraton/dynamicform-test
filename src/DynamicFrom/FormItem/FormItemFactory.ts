@@ -3,7 +3,7 @@ import FormItemMulti from "./FormItemlMuti";
 import { FormField } from "./FormItemStrategy";
 
 export default function FormFactory(formItem: any) : FormField {
-    switch (formItem.type) {
+    switch (formItem.field) {
         case 'multi':
             return new FormItemMulti(formItem);
             

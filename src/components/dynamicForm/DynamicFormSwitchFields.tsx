@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 // import SwitchField from '../layout/formItem/SwitchField';
 
 const DynamicFormSwitchFields = (props: any) => {
-  const { formData, formProps } = props;
+  const { form, formProps } = props;
   const { values, handleChange, errors } = formProps;
 
   useEffect(() => {
@@ -20,8 +20,8 @@ const DynamicFormSwitchFields = (props: any) => {
 
   return (
     <>
-      {formData.map((item: any, key: number) => {
-        switch (item.field) {
+      {form.map((item: any, key: number) => {
+        switch (item.type) {
           case "submit_button":
           case "submit":
             return (
@@ -49,7 +49,7 @@ const DynamicFormSwitchFields = (props: any) => {
                   key={key}
                   required={item.required}
                   name={item.name}
-                  type={item.field}
+                  type={item.type}
                   value={values[item.label]}
                   onChange={(e: any) => handleChange(item.name)(e)}
                 />
@@ -86,7 +86,7 @@ const DynamicFormSwitchFields = (props: any) => {
               </>
             );
           default:
-            return <>{`tipo ${item.field} não implementado`}</>;
+            return <>{`tipo ${item.type} não implementado`}</>;
         }
       })}
     </>

@@ -3,12 +3,12 @@ import FormItemStrategy from "./FormItemStrategy";
 export default class FormItemMulti extends FormItemStrategy {
 
   wrapContent(payload?: any) {
-    if (!this.formIten.type) {
-      this.formIten.type = "multi";
+    if (!this.formIten.field) {
+      this.formIten.field = "multi";
     }
 
     if (!this.formIten.options || (!this.formIten.options.length && this.formIten.options.length !== 0)) {
-      throw new Error('invalid field type')
+      throw new Error('invalid field')
     }
 
     const initiaOptions = this.formIten.options;

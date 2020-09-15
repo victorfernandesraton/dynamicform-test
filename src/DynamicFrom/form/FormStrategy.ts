@@ -37,8 +37,9 @@ export default abstract class FormStrategy {
         })
     }
 
-    abstract wrap(payload: any): void
+    abstract wrap(payload?: any): void
     
+    // TODO: reformular
     validateSchema(): any {
         let _validationSchema = this.form.reduce((result, item, index, array) => {
             if(['text','email'].includes(item.type)) {

@@ -2,12 +2,12 @@ import FormItemStrategy from './FormItemStrategy';
 export default class FormItemSingle extends FormItemStrategy {
     
     wrapContent(payload?: any) {
-        if (!this.formIten.type) {
-            this.formIten.type = 'single'
+        if (!this.formIten.field) {
+            this.formIten.field = 'single'
         }
 
-        if (this.formIten.type !== 'single') {
-            throw new Error('Invalid type')
+        if (this.formIten.field !== 'single') {
+            throw new Error('Invalid field')
         }
         
         if (payload) {
