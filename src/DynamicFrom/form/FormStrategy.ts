@@ -41,21 +41,28 @@ export default abstract class FormStrategy {
     
     validateSchema(): any {
         let _validationSchema = this.form.reduce((result, item, index, array) => {
-            result[item.name] = index;
+            if(['text','email'].includes(item.type)) {
+                result[item.name] = index;
+            }
             return result;
         }, {});
 
         for(const item of this.form){
-            if(item.field === "text"){
+            if(item.field){
                 _validationSchema[item.name] = Yup.string();
             }else if(item.field === "email"){
-                _validationSchema[item.name] = Yup.string().email()
-            }else if(item.field === "select"){
-                _validationSchema[item.name] = Yup.string().oneOf(item.options.map((o: any) => o.value));
+                _validationSchema[item.name] = Yup.string().email(`${item.label} is not valid email`)
+            }
+
+            if (item.minLength) {
+                _validationSchema[item.name] = _validationSchema[item.name].min(item.minLength, `${item.label} possui caracteres insufucientes`);
+            }
+            if (item.maxLength) {
+                _validationSchema[item.name] = _validationSchema[item.name].max(item.maxLength, `${item.label} possui excesso de caracteres`);
             }
 
             if(item.required){
-                _validationSchema[item.name] = _validationSchema[item.name].required('Required');
+                _validationSchema[item.name] = _validationSchema[item.name].required(`${item.label} is required`);
             }
         }
 

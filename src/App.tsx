@@ -4,8 +4,8 @@ import FormUser from "./DynamicFrom/form/business/FormUser";
 import DynamicForm from "./components/dynamicForm/DynamicFormView-container";
 
 const formSkeleton = [
-  { label: "Nome", name: "username", type: "single", field: "text" },
-  { label: "Sobrenome", name: "lastname", type: "single", field: "text" },
+  { label: "Nome", name: "username", type: "single", field: "text",required: true, minLength: 3 },
+  { label: "Sobrenome", name: "lastname", type: "single", field: "text", required: true },
   { label: "Email", name: "usermail", type: "single", field: "email", required: true},
   {
     label: "Gênero",
@@ -17,7 +17,7 @@ const formSkeleton = [
       { label: "Feminino", value: 2 },
     ],
   },
-  {name: 'save', type: 'single', field: 'submit', label: 'Enviar', onSubmit: (value: any, sec: any) => console.log(value, sec)}
+  {name: 'save', type: 'single', field: 'submit', label: 'Enviar', onSubmit: (values: any) => console.log(values)}
 ];
 const user = { username: "Ana", gender: 2 };
 const formUser = new FormUser(
