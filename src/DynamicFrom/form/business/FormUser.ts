@@ -1,5 +1,6 @@
 import FormStrategy, {FormObject} from '../FormStrategy';
 
+
 export default class FormUser extends FormStrategy {
 
     constructor(formObjext : FormObject, user?: any) {
@@ -8,8 +9,11 @@ export default class FormUser extends FormStrategy {
     }
     
     wrap(payload?: any): void {
-        this.formReplace(this.entity);
-        
+        this.formReplace();
+        if (this.entity) {
+            this.formReplace(this.entity);
+        }
+
         if (payload) {
             this.formReplace(payload);
         }

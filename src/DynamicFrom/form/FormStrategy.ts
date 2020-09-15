@@ -26,15 +26,23 @@ export default abstract class FormStrategy {
     }
 
     getForm() {
-        return this.form;
+        return this.form.length > 0 ? this.form :this.formSkeleton;
     }
 
-    formReplace(payload: any) {
-        this.form = this.formSkeleton.map(formItem => {
-            let newFormIten = FormItemFactory(formItem);
-            newFormIten.wrapContent(payload);
-            return newFormIten.getFormIten();
-        })
+    getFormSkeleton() {
+        return this.formSkeleton;
+    }
+
+    formReplace(payload?: any) {
+        let temp = [];
+        for (let i = 0; i < this.formSkeleton.length; i++) {
+            const element = FormItemFactory(this.formSkeleton[i]);
+            if (payload) {
+                element.wrapContent(payload);
+            }
+            temp.push(element.getFormIten())
+        }
+        this.form = temp;
     }
 
     abstract wrap(payload?: any): void
@@ -49,9 +57,9 @@ export default abstract class FormStrategy {
         }, {});
 
         for(const item of this.form){
-            if(item.field){
+            if(item.type){
                 _validationSchema[item.name] = Yup.string();
-            }else if(item.field === "email"){
+            }else if(item.type === "email"){
                 _validationSchema[item.name] = Yup.string().email(`${item.label} is not valid email`)
             }
 

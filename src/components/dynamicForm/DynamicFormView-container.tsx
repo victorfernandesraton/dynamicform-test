@@ -10,17 +10,17 @@ const DynamicFormView = (props: any) => {
   const { form, onSubmit, styled, validations, entity, ...extraProps } = props;
 
   const formData = useMemo(() => {
-    if (entity && entity instanceof FormStrategy) {
+    if (entity && entity instanceof FormStrategy && !form) {
       entity.wrap();
       return entity.getForm();
     } else {
       return form;
     }
-  }, [form, entity]);
+  }, [entity, form]);
 
   const validateSchema = useMemo(() => {
     if (entity && entity instanceof FormStrategy && !validations) {
-      return entity.validateSchema();
+      return entity.validateSchema() 
     }
     return validations;
   }, [entity, validations]);
@@ -30,7 +30,7 @@ const DynamicFormView = (props: any) => {
   return (
     <Formik
       onSubmit={onSubmit}
-      initialValues={getInitialValues(form)}
+      initialValues={getInitialValues(formData)}
       validationSchema={validateSchema}
       enableRenitialize // Necessário para realizar o update constante do formulário
       {...extraProps}

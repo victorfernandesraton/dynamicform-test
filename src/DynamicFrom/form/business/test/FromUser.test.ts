@@ -222,4 +222,46 @@ describe("FormUser", () => {
       { label: "Salvar", name: "save", type: "submit", field: 'single'},
     ]);
   });
+
+  test("mantain formSkeleton", () => {
+    const formSkeleton = [
+      { label: "Nome", name: "username", field: "single", type: "text" },
+      { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
+      {
+        label: "Gênero",
+        name: "gender",
+        field: "multi",
+        type: "select",
+        options: [
+          { label: "Masculino", value: 1, default: true },
+          { label: "Feminino", value: 2 },
+        ],
+      },
+      { label: "Salvar", name: "save", type: "submit" ,field:'single' },
+    ];
+    const user = { username: "Ana", gender: 2 };
+    const formUser = new FormUser(
+      {
+        formSkeleton,
+        mutation: "",
+      },
+      user
+    );
+    formUser.wrap({ username: 'Paulo' });
+    expect(formUser.getFormSkeleton()).toEqual([
+      { label: "Nome", name: "username", field: "single", type: "text" },
+      { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
+      {
+        label: "Gênero",
+        name: "gender",
+        field: "multi",
+        type: "select",
+        options: [
+          { label: "Masculino", value: 1, default: true },
+          { label: "Feminino", value: 2 },
+        ],
+      },
+      { label: "Salvar", name: "save", type: "submit" ,field:'single' },
+    ]);
+  });
 });

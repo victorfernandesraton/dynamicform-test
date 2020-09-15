@@ -1,9 +1,8 @@
 export const getInitialValues = (formData = []) => {
   return formData.reduce((acc: any, item:any) => {
     let initialValue;
-    switch (item.type) {
-      case 'select':
-      case 'switch':
+    switch (item.field) {
+      case 'multi':
         const result = item.options.find(
           (op: any) => op.isDefault === true || op.default === true,
         );
