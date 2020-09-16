@@ -16,7 +16,7 @@ export default abstract class FormStrategy {
 
   constructor(formObject: FormObject) {
     this.formSkeleton = [...formObject.formSkeleton];
-    this.form = [];
+    this.form = formObject.form ? [...formObject.form]: [];
     this.mutation = formObject.mutation;
   }
 

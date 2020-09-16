@@ -2,7 +2,7 @@ import FormUser from "../business/FormUser";
 
 import * as Yup from "yup";
 
-describe.skip("FormSTrategy", () => {
+describe("FormSTrategy", () => {
   test("validationRule", () => {
     const formScheme = [
       {
@@ -35,7 +35,7 @@ describe.skip("FormSTrategy", () => {
       formSkeleton: formScheme,
       mutation: "",
     });
-    form.wrap();
+    form.build()
     expect(form.validateSchema()).toStrictEqual(YupValidation);
   });
 });
