@@ -28,7 +28,7 @@
       "field": "multi",
       "type": "select",
       "options": [
-        { "label": "Masculino", "value": 1,"default": true },
+        { "label": "Masculino", "value": 1, "default": true },
         { "label": "Feminino", "value": 2 }
       ]
     },

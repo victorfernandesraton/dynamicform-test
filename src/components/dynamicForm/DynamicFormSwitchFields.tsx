@@ -47,7 +47,9 @@ const DynamicFormSwitchFields = (props: any) => {
                   value={values[item.name]}
                   onChange={(e: any) => handleChange(item.name)(e)}
                 />
-                {errors && errors[item.name] && <span>{errors[item.name]}</span>}
+                {errors && errors[item.name] && (
+                  <span>{errors[item.name]}</span>
+                )}
               </>
             );
           case "select":
@@ -83,7 +85,7 @@ const DynamicFormSwitchFields = (props: any) => {
         }
       })}
     </>
-  )
+  );
 };
 
 export default DynamicFormSwitchFields;
