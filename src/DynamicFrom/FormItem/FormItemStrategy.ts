@@ -8,7 +8,7 @@ export default abstract class FormItemStrategy {
   protected formIten: FormFieldOject;
 
   constructor(formIten: any) {
-    this.formIten = formIten;
+    this.formIten = {...formIten};
   }
 
   getFormIten(): any {

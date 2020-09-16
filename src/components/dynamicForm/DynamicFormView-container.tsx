@@ -11,7 +11,6 @@ const DynamicFormView = (props: any) => {
 
   const formData = useMemo(() => {
     if (entity && entity instanceof FormStrategy && !form) {
-      entity.wrap();
       return entity.getForm();
     } else {
       if (form instanceof Array) {

@@ -25,7 +25,7 @@ describe("FormUser", () => {
       },
       user
     );
-    formUser.wrap({ field: "edit" });
+    formUser.build();
     expect(formUser.getForm()).toEqual([
       {
         label: "Nome",
@@ -73,6 +73,7 @@ describe("FormUser", () => {
       },
       user
     );
+    formUser.build();
     formUser.wrap();
     expect(formUser.getForm()).toEqual([
       {
@@ -127,7 +128,7 @@ describe("FormUser", () => {
       },
       user
     );
-    formUser.wrap({ field: "create" });
+    formUser.build()
     expect(formUser.getForm()).toEqual([
       {
         label: "Nome",
@@ -175,6 +176,7 @@ describe("FormUser", () => {
       },
       user
     );
+    formUser.build()
     formUser.wrap({ username: "ana" });
     expect(formUser.getForm()).toEqual([
       {
@@ -223,6 +225,7 @@ describe("FormUser", () => {
       },
       user
     );
+    formUser.build()
     formUser.wrap({ username: "ana" });
     expect(formUser.getForm()).toEqual([
       {
@@ -247,7 +250,7 @@ describe("FormUser", () => {
     ]);
   });
 
-  test("mantain formSkeleton", () => {
+  test("mantain formSkeleton, after wrap", () => {
     const formSkeleton = [
       { label: "Nome", name: "username", field: "single", type: "text" },
       { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
@@ -271,7 +274,8 @@ describe("FormUser", () => {
       },
       user
     );
-    formUser.wrap({ username: "Paulo" });
+    
+    formUser.wrap({ username: "Ana" , gender: 2});
     expect(formUser.getFormSkeleton()).toEqual([
       { label: "Nome", name: "username", field: "single", type: "text" },
       { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
@@ -287,5 +291,48 @@ describe("FormUser", () => {
       },
       { label: "Salvar", name: "save", type: "submit", field: "single" },
     ]);
+  });
+  test("mantain formSkeleton, before wrap", () => {
+    const formSkeleton = [
+      { label: "Nome", name: "username", field: "single", type: "text" },
+      { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
+      {
+        label: "Gênero",
+        name: "gender",
+        field: "multi",
+        type: "select",
+        options: [
+          { label: "Masculino", value: 1, default: true },
+          { label: "Feminino", value: 2 },
+        ],
+      },
+      { label: "Salvar", name: "save", type: "submit", field: "single" },
+    ];
+    const user = { username: "Ana", gender: 2 };
+    const formUser = new FormUser(
+      {
+        formSkeleton,
+        mutation: "",
+      },
+      user
+    );
+    
+    expect(formUser.getFormSkeleton()).toEqual([
+      { label: "Nome", name: "username", field: "single", type: "text" },
+      { label: "Sobrenome", name: "lastname", field: "single", type: "text" },
+      {
+        label: "Gênero",
+        name: "gender",
+        field: "multi",
+        type: "select",
+        options: [
+          { label: "Masculino", value: 1, default: true },
+          { label: "Feminino", value: 2 },
+        ],
+      },
+      { label: "Salvar", name: "save", type: "submit", field: "single" },
+    ]);
+    formUser.wrap({ username: "Ana" , gender: 2});
+
   });
 });

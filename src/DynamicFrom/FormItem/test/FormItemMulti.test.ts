@@ -187,4 +187,35 @@ describe("FormItemMulti test", () => {
       });
     }).toThrow("invalid field");
   });
+
+  test("matain original values", () => {
+    const initialForm = {
+      title: "Select language",
+      field: "multi",
+      type: "select",
+      name: "fk_language",
+      options: [
+        { value: 1, label: "pt-br" },
+        { value: 2, label: "en-us" },
+        { value: 3, label: "es" },
+        { value: 4, label: "jp" },
+      ],
+    }
+    const record = new FormItemMulti(initialForm);
+    record.wrapContent({
+      fk_language: 2,
+    });
+    expect(initialForm).toEqual({
+      title: "Select language",
+      field: "multi",
+      type: "select",
+      name: "fk_language",
+      options: [
+        { value: 1, label: "pt-br" },
+        { value: 2, label: "en-us" },
+        { value: 3, label: "es" },
+        { value: 4, label: "jp" },
+      ],
+    });
+  });
 });

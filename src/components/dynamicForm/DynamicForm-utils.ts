@@ -6,7 +6,7 @@ export const getInitialValues = (formData: any) => {
         const result = item.options.find(
           (op: any) => op.isDefault === true || op.default === true
         );
-
+        
         initialValue = result ? result.value : null;
         break;
       default:

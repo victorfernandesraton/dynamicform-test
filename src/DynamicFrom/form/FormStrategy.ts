@@ -15,37 +15,42 @@ export default abstract class FormStrategy {
   protected entity: any;
 
   constructor(formObject: FormObject) {
-    this.formSkeleton = formObject.formSkeleton;
-    this.form = formObject.form || [];
+    this.formSkeleton = [...formObject.formSkeleton];
+    this.form = [];
     this.mutation = formObject.mutation;
   }
 
-  makeMutation(): any {
+  abstract wrap(payload?: any): void;
+
+  public build() {
+    this.formReplace(this.entity)
+  }
+
+  formReplace(payload?: any) {
+    let list = [];
+    for (const iten of this.formSkeleton) {
+      const element = FormItemFactory(iten);
+      if (payload) {
+        element.wrapContent(payload);
+      }
+      let val = element.getFormIten()
+      list.push(val);
+    }
+    this.form = Object.assign(list);
+  }
+
+  public makeMutation(): any {
     // TODO request para mutation
     return this.mutation;
   }
 
-  getForm() {
-    return this.form.length > 0 ? this.form : this.formSkeleton;
+  public getForm(): Array<any> {
+    return this.form;
   }
 
-  getFormSkeleton() {
+  getFormSkeleton(): Array<any> {
     return this.formSkeleton;
   }
-
-  formReplace(payload?: any) {
-    let temp = [];
-    for (let i = 0; i < this.formSkeleton.length; i++) {
-      const element = FormItemFactory(this.formSkeleton[i]);
-      if (payload) {
-        element.wrapContent(payload);
-      }
-      temp.push(element.getFormIten());
-    }
-    this.form = temp;
-  }
-
-  abstract wrap(payload?: any): void;
 
   // TODO: reformular
   validateSchema(): any {

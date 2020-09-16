@@ -89,4 +89,22 @@ describe("formItemSIngle test", () => {
       });
     }).toThrow("Invalid field");
   });
+  
+  test("override default value", () => {
+    const formItem = {
+      title: "Inssert name",
+      field: "single",
+      type: "text",
+      name: "st_username",
+    }
+    const record = new FormItemSingle(formItem);
+    record.wrapContent();
+    record.getFormIten()
+    expect(formItem).toEqual({
+      title: "Inssert name",
+      field: "single",
+      type: "text",
+      name: "st_username",
+    })
+  });
 });
